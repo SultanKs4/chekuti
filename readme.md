@@ -1,6 +1,6 @@
 # Chekuti
 
-Automate your boring survey at [this site](ujian.jti.polinema.ac.id)
+Automate your boring survey at [this site](http://ujian.jti.polinema.ac.id)
 
 it will automatically fill random `2-5` for all the survey question
 
