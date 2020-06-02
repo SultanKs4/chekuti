@@ -16,7 +16,7 @@ it will automatically fill random `2-5` for all the survey question
 2. PIP
 3. Virtualenv (Optional but i highly recommend use it)
 4. Firefox Browser
-5. [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+5. [Geckodriver](https://github.com/mozilla/geckodriver/releases) [OPTIONAL]
 
 :heavy_exclamation_mark: I ASSUME YOU ALREADY CREATE A NEW VIRTUAL ENVIRONTMENT AND ACTIVATE IT
 

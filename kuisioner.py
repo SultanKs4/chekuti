@@ -10,12 +10,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+import geckodriver_autoinstaller
 
 
 class kuisioner(object):
     def __init__(self, username, password):
+        geckodriver_autoinstaller.install()
         self.options = Options()
-        self.options.headless = False
+        self.options.headless = True
         self.options.add_argument("--window-size=1366x768")
         self.driver = webdriver.Firefox(options=self.options)
         self.username = username
@@ -56,12 +58,21 @@ class kuisioner(object):
     def get_remaining(self):
         return self.driver.find_elements_by_link_text('kerjakan')
 
+    def logout(self):
+        logout_btn = '/html/body/div[5]/a'
+        username_input = '//*[@id="xuser_name"]'
+        self.wait(xpath=logout_btn, message="logout button")
+        self.driver.find_element_by_xpath(logout_btn).click()
+        self.wait(xpath=username_input, message="logout button")
+        self.driver.quit()
+        sys.exit(1)
+
     def kuis(self):
         print("Questionnaire Start")
         action_remaining = self.get_remaining()
         if len(action_remaining) == 0:
             print("All Questionnaire already complete")
-            sys.exit(1)
+            self.logout()
         else:
             print("List Questionnaire remaining")
         forward_td = []
@@ -103,3 +114,5 @@ class kuisioner(object):
             self.driver.find_element_by_xpath(confirm_end_btn).click()
             print("job completed")
         print("All Questionnaire completed")
+
+        self.logout()
