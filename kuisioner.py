@@ -50,7 +50,7 @@ class kuisioner(object):
             password_input).send_keys(self.password)
         self.driver.find_element_by_xpath(login_submit).click()
 
-        list_test = '/html/body/div[3]/div/div[1]/table'
+        list_test = '/html/body/div[2]/div/div[1]/table'
 
         self.wait(xpath=list_test, message="home page")
         print("Login Completed")
@@ -59,7 +59,7 @@ class kuisioner(object):
         return self.driver.find_elements_by_link_text('kerjakan')
 
     def logout(self):
-        logout_btn = '/html/body/div[5]/a'
+        logout_btn = '//*[@id="scrollayer"]/ul/li[3]/a'
         username_input = '//*[@id="xuser_name"]'
         self.wait(xpath=logout_btn, message="logout button")
         self.driver.find_element_by_xpath(logout_btn).click()
@@ -95,15 +95,14 @@ class kuisioner(object):
             print("Start completing {}".format(forward_td[i]))
             action_remaining[0].click()
 
-            btn_start = '/html/body/div[3]/div/div[3]/a[1]'
+            btn_start = '/html/body/div[2]/div/div[3]/a[1]'
             self.wait(xpath=btn_start, message="Start Button Questionnaire")
-            lala = 0
             self.driver.find_element_by_xpath(btn_start).click()
             for j in range(22):
                 self.wait(xpath=answer_area, message="answer area")
                 element_answer = self.driver.find_element_by_xpath(answer_area)
                 element_answer.clear()
-                element_answer.send_keys(random.randint(2, 5))
+                element_answer.send_keys(random.randint(3, 5))
                 self.driver.find_element_by_xpath(confirmed_btn).click()
                 self.driver.find_element_by_xpath(next_btn).click()
 
